@@ -21,7 +21,7 @@
       "ssh_wait_timeout": "10000s",
       "switch_name": "",
       "floppy_files": [
-        "floppy/win2012r2-standard/Autounattend.xml",
+        "floppy/eval-win2012r2-standard/Autounattend.xml",
         "floppy/00-run-all-scripts.cmd",
         "floppy/install-winrm.cmd",
         "floppy/powerconfig.bat",
