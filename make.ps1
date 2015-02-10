@@ -22,12 +22,16 @@ Param(
     [alias("g")]
     $GENERALIZE = "false")
 
+
+$WORK_PATH = (Get-Item -Path ".\" -Verbose).FullName
+
 Write-Host "Target = $TARGET"
 Write-Host "Update_OS = $UPDATE"
 Write-Host "Configuration_Management = $CM"
 Write-Host "Configuration_Management_Version = $CM_VERSION"
 Write-Host "Box_Version = $BOX_VERSION"
 Write-Host "Generalize = $GENERALIZE"
+Write-Host "Working_Path = $WORK_PATH"
 
 
 # Check variables and generate command line for packer
@@ -47,6 +51,7 @@ $proc.RedirectStandardOutput = $true
 $proc.UseShellExecute = $false
 $proc.Arguments = "build -only=hyper-iso $PACKER_VARS $TARGET.json"
 $proc.Verb = "runAs"
+$proc.WorkingDirectory = "$WORK_PATH"
 $p = New-Object System.Diagnostics.Process
 $p.StartInfo = $proc
 $p.Start() | Out-Null
