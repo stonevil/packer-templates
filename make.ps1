@@ -49,7 +49,7 @@ $proc.FileName = "packer.exe"
 $proc.RedirectStandardError = $true
 $proc.RedirectStandardOutput = $true
 $proc.UseShellExecute = $false
-$proc.Arguments = "build -only=hyper-iso $PACKER_VARS $TARGET.json"
+$proc.Arguments = "build -only=hyperv-iso $PACKER_VARS $TARGET.json"
 $proc.Verb = "runAs"
 $proc.WorkingDirectory = "$WORK_PATH"
 $p = New-Object System.Diagnostics.Process
