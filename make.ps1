@@ -4,16 +4,16 @@ Param(
     [alias("t")]
     $TARGET,
     [Parameter(Position=2)]
-    [ValidateSet("nocm","chef","chefdk","salt","puppet")]
-    [alias("c")]
-    $CM = "nocm",
-    [Parameter(Position=3)]
-    [alias("v")]
-    $CM_VERSION = "latest",
-    [Parameter(Position=4)]
     [ValidateSet("true","false")]
     [alias("u")]
     $UPDATE = "false",
+    [Parameter(Position=3)]
+    [ValidateSet("nocm","chef","chefdk","salt","puppet")]
+    [alias("c")]
+    $CM = "nocm",
+    [Parameter(Position=4)]
+    [alias("v")]
+    $CM_VERSION = "latest",
     [Parameter(Position=5)]
     [alias("b")]
     $BOX_VERSION,
@@ -41,6 +41,4 @@ $PACKER_VARS += "-var cm=$CM -var update=$UPDATE"
 
 $PACKER_VARS
 
-# find rigth way
-# start-process powershell -verb runAs
-# packer build -only=hyperv-iso $PACKER_VARS $TARGET.json
+# start-process packer -ArgumentList build -only=hyperv-iso $PACKER_VARS $TARGET.json -verb runAs
