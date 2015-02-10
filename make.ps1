@@ -2,7 +2,7 @@
 Param(
     [Parameter(Position=1)]
     [alias("t")]
-    $TARGET =,
+    $TARGET,
     [Parameter(Position=2)]
     [ValidateSet("nocm","chef","chefdk","salt","puppet")]
     [alias("c")]
