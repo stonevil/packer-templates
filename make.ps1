@@ -46,7 +46,7 @@ $proc.RedirectStandardError = $true
 $proc.RedirectStandardOutput = $true
 $proc.UseShellExecute = $false
 $proc.Arguments = "build -only=hyper-iso $PACKER_VARS $TARGET.json"
-$proc.Vars = "runAs"
+$proc.Verb = "runAs"
 $p = New-Object System.Diagnostics.Process
 $p.StartInfo = $proc
 $p.Start() | Out-Null
