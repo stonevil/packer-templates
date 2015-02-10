@@ -41,5 +41,6 @@ $PACKER_VARS += "-var cm=$CM -var update=$UPDATE"
 
 $PACKER_VARS
 
+# find rigth way
 # start-process powershell -verb runAs
 # packer build -only=hyperv-iso $PACKER_VARS $TARGET.json
