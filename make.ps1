@@ -25,25 +25,19 @@ Param(
 
 $WORK_PATH = (Get-Item -Path ".\" -Verbose).FullName
 
-Write-Host "Target = $TARGET"
-Write-Host "Update_OS = $UPDATE"
-Write-Host "Configuration_Management = $CM"
-Write-Host "Configuration_Management_Version = $CM_VERSION"
-Write-Host "Box_Version = $BOX_VERSION"
+Write-Host "Packer task configuration"
+Write-Host "Target configuration = $TARGET"
+Write-Host "Update OS status = $UPDATE"
+Write-Host "Configuration Management = $CM"
+Write-Host "Configuration Management version = $CM_VERSION"
+Write-Host "Targe box version = $BOX_VERSION"
 Write-Host "Generalize = $GENERALIZE"
-Write-Host "Working_Path = $WORK_PATH"
 
 
 # Check variables and generate command line for packer
 $PACKER_VARS += "-var cm=$CM -var update=$UPDATE"
 
-#if ($CM_VERSION -neq "")
-#{
-# $PACKER_VARS += "-var cm_version=$CM_VERSION"
-#}
-
-$PACKER_VARS
-
+# Execute task
 $proc = New-Object System.Diagnostics.ProcessStartInfo
 $proc.FileName = "packer.exe"
 $proc.RedirectStandardError = $true
