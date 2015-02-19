@@ -11,7 +11,7 @@
   },
   "builders": [
     {
-      "vm_name": "win81x64-enterprise",
+      "vm_name": "win81x64-enterprise-cygwin",
       "type": "hyperv-iso",
       "iso_url": "{{ user `iso_local_url` }}",
       "iso_checksum": "{{ user `iso_checksum` }}",
