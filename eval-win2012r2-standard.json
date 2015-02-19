@@ -33,7 +33,6 @@
         "floppy/z-install-integration-services.bat",
         "floppy/zz-start-sshd.cmd",
         "floppy/oracle-cert.cer",
-        "floppy/update.bat",
         "floppy/disablewinupdate.bat",
         "floppy/zzzz-shutdown.bat"
       ],
