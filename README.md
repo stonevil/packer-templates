@@ -5,16 +5,21 @@
 This repository contains templates for Windows that can create
 Vagrant boxes using Packer.
 
-## Core Boxes
+# Windows host with Hyper-V
 
-64-bit boxes:
+## Building the Vagrant boxes
 
-* win2012r2-datacenter-nocm, VMware 4.3GB/VirtualBox 4.2GB
-* win2012-datacenter-nocm, VMware 3.7GB/VirtualBox 3.5GB
-* win2008r2-datacenter-nocm, VMware 3.0GB/VirtualBox 2.8GB
-* win81x64-enterprise-nocm, VMware 4.0GB/VirtualBox 3.6GB
-* win8x64-enterprise-nocm, VMware 3.6GB/VirtualBox 3.3GB
-* win7x64-enterprise-nocm, VMware 3.5GB/VirtualBox 3.2GB
+To build any of the boxes, you will need installed and enabled Hyper-V.
+
+A packer command must be executed with Administration privileges for Hyper-V cmdlets.
+
+    packer build -only=hyper-iso template.json -var update=true -var cm=nocm
+
+Example: for building Windows 2012 R2 Server Standard Edition with OS updates with integrated Chef client execute
+
+    packer build -only=hyper-iso win2012r2-standard.json -var update=true -var cm=chef
+
+# OS X and Linux host with VMware (Fusion or Workstation), VirtualBox, Parallels
 
 ## Building the Vagrant boxes
 
