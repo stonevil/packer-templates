@@ -1,3 +1,15 @@
+<#
+.SYNOPSIS
+
+Simplify building Hyper-V images at Windows
+
+.EXAMPLE
+
+make.ps1 eval-win2012rs-standart true nocm latest
+
+#>
+
+
 # Parse command line arguments
 Param(
     [Parameter(Position=1)]
@@ -20,7 +32,8 @@ Param(
     [Parameter(Position=6)]
     [ValidateSet("true","false")]
     [alias("g")]
-    $GENERALIZE = "false")
+    $GENERALIZE = "false"
+)
 
 
 $WORK_PATH = (Get-Item -Path ".\" -Verbose).FullName
