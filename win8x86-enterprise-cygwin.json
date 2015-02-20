@@ -4,11 +4,40 @@
     "cm": "chef",
     "cm_version": "",
     "iso_url": "iso/en_windows_8_enterprise_x86_dvd_917587.iso",
+    "iso_local_url": "iso/en_windows_8_enterprise_x86_dvd_917587.iso",
     "iso_checksum": "fefce3e64fb9ec1cc7977165328890ccc9a10656",
     "update": true,
     "shutdown_command": "shutdown /s /t 10 /f /d p:4:1 /c 'Packer Shutdown'"
   },
   "builders": [
+    {
+      "vm_name": "win8x86-enterprise-cygwin",
+      "type": "hyperv-iso",
+      "iso_url": "{{ user `iso_local_url` }}",
+      "iso_checksum": "{{ user `iso_checksum` }}",
+      "iso_checksum_type": "sha1",
+      "ssh_username": "vagrant",
+      "ssh_password": "vagrant",
+      "ssh_wait_timeout": "10000s",
+      "switch_name": "",
+      "floppy_files": [
+        "floppy/win8x86-enterprise/Autounattend.xml",
+        "floppy/00-run-all-scripts.cmd",
+        "floppy/install-winrm.cmd",
+        "floppy/powerconfig.bat",
+        "floppy/01-install-wget.cmd",
+        "floppy/_download.cmd",
+        "floppy/_packer_config.cmd",
+        "floppy/passwordchange.bat",
+        "floppy/z-install-integration-services.bat",
+        "floppy/cygwin.sh",
+        "floppy/cygwin.bat",
+        "floppy/oracle-cert.cer",
+        "floppy/disablewinupdate.bat",
+        "floppy/zzzz-shutdown.bat"
+      ],
+      "shutdown_command": "{{ user `shutdown_command`}}"
+    },
     {
       "vm_name": "win8x86-enterprise-cygwin",
       "type": "vmware-iso",
