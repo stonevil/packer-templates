@@ -51,7 +51,7 @@ Example: for building Windows 2012 R2 Server Standard Edition with OS updates wi
 * OS X or Linux host machine with VirtualBox/VMware Fusion/VMware Workstation/Parallels Desktop
 * VirtualBox [https://www.virtualbox.org](https://www.virtualbox.org)
 * VMware Fusion / VMware Workstation [http://www.vmware.com](http://www.vmware.com)
-* Prallels Desktop [http://www.parallels.com](http://www.parallels.com)
+* Parallels Desktop [http://www.parallels.com](http://www.parallels.com)
 * Packer and vagrant plugins for chosen virtualisation
 * GNU Make
 
