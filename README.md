@@ -17,13 +17,15 @@ Vagrant boxes using Packer.
 * Wget [https://www.gnu.org/software/wget/](https://www.gnu.org/software/wget/)
 * 7zip [http://www.7-zip.org](http://www.7-zip.org)
 * ChefDK (optional) [https://downloads.chef.io/chef-dk/](https://downloads.chef.io/chef-dk/)
-* Windows 8.1/2008r2/2012r2 host machine with enabled Hyper-V service
+* Windows 8.1/2008r2/2012r2 host machine with enabled Hyper-V service.
+
+Virtual Machines requires internet access for auto-update, packages download and install. Please configure Hyper-V Virtual Switch properly.
 
 [Chocolatey](https://chocolatey.org) is preferable to install required software
 
-    PS:\> iex ((new-object net.webclient).DownloadString('https://chocolatey.org/install.ps1'))
-    PS:\> choco install sysinternals 7zip vim git git.commandline git.install git-credential-winstore wget packer chefdk
-    PS:\> dism /online /enable-feature /featurename:Microsoft-Hyper-V /All /norestart
+    PS:\> iex ((new-object net.webclient).DownloadString('https://chocolatey.org/install.ps1'))        
+    PS:\> choco install sysinternals 7zip vim git git.commandline git.install git-credential-winstore wget packer chfdk
+    PS:\> dism /online /enable-feature /featurename:Microsoft-Hyper-V /Al    restart`
 
 ## Building the Vagrant boxes
 
@@ -76,6 +78,10 @@ A GNU Make `Makefile` drives the process via the following targets:
     make test   # Run tests against all the boxes
     make list   # Print out individual targets
     make clean  # Clean up build detritus
+
+Example: for building Windows 2012 R2 Server Standard Edition with OS updates for VMware execute
+
+    user:~> export UPDATE=true && make vmware/win2012r2-standard
 
 ### Tests
 
