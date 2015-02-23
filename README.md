@@ -5,7 +5,25 @@
 This repository contains templates for Windows that can create
 Vagrant boxes using Packer.
 
+
 # Windows host with Hyper-V
+
+## Requirements
+
+* HashiCorp Packer [https://www.packer.io](https://www.packer.io)
+* Packer Hyper-V plugin [https://github.com/pbolduc/packer-hyperv](https://github.com/pbolduc/packer-hyperv)
+* HashiCorp Vagrant [https://www.vagrantup.com](https://www.vagrantup.com)
+* Git command line [http://www.git-scm.com](http://www.git-scm.com)
+* Wget [https://www.gnu.org/software/wget/](https://www.gnu.org/software/wget/)
+* 7zip [http://www.7-zip.org](http://www.7-zip.org)
+* ChefDK (optional) [https://downloads.chef.io/chef-dk/](https://downloads.chef.io/chef-dk/)
+* Windows 8.1/2008r2/2012r2 host machine with enabled Hyper-V service
+
+[Chocolatey](https://chocolatey.org) is preferable to install required software
+
+    PS:\> iex ((new-object net.webclient).DownloadString('https://chocolatey.org/install.ps1'))
+    PS:\> choco install sysinternals 7zip vim git git.commandline git.install git-credential-winstore wget packer chefdk
+    PS:\> dism /online /enable-feature /featurename:Microsoft-Hyper-V /All /norestart
 
 ## Building the Vagrant boxes
 
@@ -20,6 +38,33 @@ Example: for building Windows 2012 R2 Server Standard Edition with OS updates wi
     packer build -only=hyper-iso win2012r2-standard.json -var update=true -var cm=chef
 
 # OS X and Linux host with VMware (Fusion or Workstation), VirtualBox, Parallels
+
+## Requirements
+
+* HashiCorp Packer [https://www.packer.io](https://www.packer.io)
+* HashiCorp Vagrant [https://www.vagrantup.com](https://www.vagrantup.com)
+* Git command line [http://www.git-scm.com](http://www.git-scm.com)
+* Wget [https://www.gnu.org/software/wget/](https://www.gnu.org/software/wget/)
+* ChefDK (optional) [https://downloads.chef.io/chef-dk/](https://downloads.chef.io/chef-dk/)
+* OS X or Linux host machine with VirtualBox/VMware Fusion/VMware Workstation/Parallels Desktop
+* VirtualBox [https://www.virtualbox.org](https://www.virtualbox.org)
+* VMware Fusion / VMware Workstation [http://www.vmware.com](http://www.vmware.com)
+* Prallels Desktop [http://www.parallels.com](http://www.parallels.com)
+* Packer and vagrant plugins for chosen virtualisation
+* GNU Make
+
+## OS X
+
+[Homebrew](http://brew.sh) is preferable to install required software for OS X. Xcode command line tools must be installed at OS X.
+
+    user:~> xcode-select --install
+    user:~> ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+    user:~> brew tap homebrew/binary
+    user:~> brew install wget packer
+
+## Linux
+
+Native packages is preferable to install required software
 
 ## Building the Vagrant boxes
 
